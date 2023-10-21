@@ -103,7 +103,9 @@
 
                             <h6 class="card-title">Update Admin Profile</h6>
 
-                            <form class="forms-sample">
+                            <form method="POST" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data"
+                                class="forms-sample">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputUsername1" class="form-label">Username</label>
                                     <input type="text" class="form-control" id="exampleInputUsername1" name="username"
@@ -147,7 +149,6 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Save Changes</button>
                             </form>
-
                         </div>
                     </div>
                 </div>
