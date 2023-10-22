@@ -108,7 +108,7 @@
                                 @csrf
                                 <div class="mb-3">
                                     <label for="old_password" class="form-label">Old Password</label>
-                                    <input type="text" class="form-control @error('old_password') is-invalid @enderror"
+                                    <input type="password" class="form-control @error('old_password') is-invalid @enderror"
                                         id="old_password" name="old_password" autocomplete="off">
                                     @error('old_password')
                                         <span class="text-danger">{{ $message }}</span>
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="new_password" class="form-label">New Password</label>
-                                    <input type="text" class="form-control @error('new_password') is-invalid @enderror"
+                                    <input type="password" class="form-control @error('new_password') is-invalid @enderror"
                                         id="new_password" name="new_password" autocomplete="off">
                                     @error('new_password')
                                         <span class="text-danger">{{ $message }}</span>
@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
-                                    <input type="text" class="form-control" id="new_password_confirmation"
+                                    <input type="password" class="form-control" id="new_password_confirmation"
                                         name="new_password_confirmation" autocomplete="off">
                                 </div>
                                 <button type="submit" class="btn btn-primary me-2">Save Changes</button>
