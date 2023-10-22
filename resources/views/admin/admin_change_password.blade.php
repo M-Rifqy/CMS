@@ -119,7 +119,7 @@
                                     <input type="text" class="form-control @error('new_password') is-invalid @enderror"
                                         id="new_password" name="new_password" autocomplete="off">
                                     @error('new_password')
-                                        <span class="text-danger">{{ $mess age }}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="mb-3">
