@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('admin.change.password');
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('admin.update.password');
     // Route::get('/admin/logout', [AdminController::class, 'AdminLogout'])->name('admin.logout');
+    
+    Route::get('/all/permission', [RoleController::class, 'AllPermission'])->name('all.permission');
+    Route::get('/add/permission', [RoleController::class, 'AddPermission'])->name('add.permission');
+    Route::post('/store/permission', [RoleController::class, 'StorePermission'])->name('store.permission');
+    Route::get('/edit/permission/{id}', [RoleController::class, 'EditPermission'])->name('edit.permission');
+    Route::post('/update/permission', [RoleController::class, 'UpdatePermission'])->name('update.permission');
 });
 
 Route::middleware(['auth', 'role:agent'])->group(function () {
