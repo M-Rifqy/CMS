@@ -57,4 +57,16 @@ class RoleController extends Controller
 
         return redirect()->route('all.permission')->with($notification);
     }
+
+    public function DeletePermission($id)
+    {
+        Permission::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Permission Deleted Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->back()->with($notification);
+    }
 }

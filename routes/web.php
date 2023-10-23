@@ -44,6 +44,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/store/permission', [RoleController::class, 'StorePermission'])->name('store.permission');
     Route::get('/edit/permission/{id}', [RoleController::class, 'EditPermission'])->name('edit.permission');
     Route::post('/update/permission', [RoleController::class, 'UpdatePermission'])->name('update.permission');
+    Route::get('/delete/permission/{id}', [RoleController::class, 'DeletePermission'])->name('delete.permission');
 });
 
 Route::middleware(['auth', 'role:agent'])->group(function () {
