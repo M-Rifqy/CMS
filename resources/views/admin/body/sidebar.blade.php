@@ -139,10 +139,16 @@
                 <div class="collapse" id="advancedUI">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Role</a>
+                            <a href="{{route('all.role')}}" class="nav-link">Role</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('all.permission')}}" class="nav-link">Permission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('add.role.permission')}}" class="nav-link">Role in Permission</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('all.role.permission')}}" class="nav-link">All Role in Permission</a>
                         </li>
                     </ul>
                 </div>

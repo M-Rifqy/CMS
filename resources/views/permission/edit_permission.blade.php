@@ -6,7 +6,7 @@
                 <div class="row">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">Add Permission</h6>
+                            <h6 class="card-title">Edit Permission</h6>
                             <form action="{{ route('update.permission') }}" method="POST" class="form-sample" id="myForm">
                                 @csrf
                                 <input type="hidden" name="id" value="{{ $permission->id }}">
