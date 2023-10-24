@@ -56,6 +56,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/all/role/permission', [RoleController::class, 'AllRolePermission'])->name('all.role.permission');
     Route::get('/add/role/permission', [RoleController::class, 'AddRolePermission'])->name('add.role.permission');
     Route::post('/role/permission/store', [RoleController::class, 'RolePermissionStore'])->name('role.permission.store');
+    Route::get('/edit/role/permission/{id}', [RoleController::class, 'EditRolePermission'])->name('edit.role.permission');
+    Route::post('/update/role/permission/{id}', [RoleController::class, 'UpdateRolePermission'])->name('update.role.permission');
 });
 
 Route::middleware(['auth', 'role:agent'])->group(function () {

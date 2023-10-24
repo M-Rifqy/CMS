@@ -163,4 +163,29 @@ class RoleController extends Controller
         $roles = Role::all();
         return view('rolesetup.all_role_permission', compact('roles'));
     }
+
+    public function EditRolePermission($id)
+    {
+        $role = Role::findOrFail($id);
+        $permissions = Permission::all();
+        $permission_groups = User::getpermissionGroups();
+        return view('rolesetup.edit_role_permission', compact('role', 'permissions', 'permission_groups'));
+    }
+
+    public function UpdateRolePermission(Request $request, $id)
+    {
+        $role = Role::findOrFail($id);
+        $permissions = $request->permission;
+
+        if (!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+        $notification = array(
+            'message' => 'Role Permission Updated Successfully',
+            'alert-type' => 'success',
+        );
+
+        return redirect()->route('all.role.permission')->with($notification);
+    }
 }
