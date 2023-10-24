@@ -37,7 +37,7 @@
                                             <td>
                                                 <a href="{{ route('edit.role.permission', $item->id) }}"
                                                     class="btn btn-inverse-warning">Edit</a>
-                                                <a href="{{ route('delete.role', $item->id) }}"
+                                                <a href="{{ route('delete.role.permission', $item->id) }}"
                                                     class="btn btn-inverse-danger" id="delete">Delete</a>
                                             </td>
                                         </tr>
