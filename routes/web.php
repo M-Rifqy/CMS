@@ -59,10 +59,17 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/edit/role/permission/{id}', [RoleController::class, 'EditRolePermission'])->name('edit.role.permission');
     Route::post('/update/role/permission/{id}', [RoleController::class, 'UpdateRolePermission'])->name('update.role.permission');
     Route::get('/delete/role/permission/{id}', [RoleController::class, 'DeleteRolePermission'])->name('delete.role.permission');
+    
+    Route::get('/all/admin', [AdminController::class, 'AllAdmin'])->name('all.admin');
+    Route::get('/add/admin', [AdminController::class, 'AddAdmin'])->name('add.admin');
+    Route::post('/store/admin', [AdminController::class, 'StoreAdmin'])->name('store.admin');
+    Route::get('/edit/admin/{id}', [AdminController::class, 'EditAdmin'])->name('edit.admin');
+    Route::post('/update/admin/{id}', [AdminController::class, 'UpdateAdmin'])->name('update.admin');
+
 });
 
 Route::middleware(['auth', 'role:agent'])->group(function () {
-    Route::get('/agent/dashboard', [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
+    Route::get('/agent/dashboard' , [AgentController::class, 'AgentDashboard'])->name('agent.dashboard');
 });
 
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');

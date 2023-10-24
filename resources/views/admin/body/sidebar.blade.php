@@ -139,16 +139,34 @@
                 <div class="collapse" id="advancedUI">
                     <ul class="nav sub-menu">
                         <li class="nav-item">
-                            <a href="{{route('all.role')}}" class="nav-link">Role</a>
+                            <a href="{{ route('all.role') }}" class="nav-link">Role</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('all.permission')}}" class="nav-link">Permission</a>
+                            <a href="{{ route('all.permission') }}" class="nav-link">Permission</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('add.role.permission')}}" class="nav-link">Role in Permission</a>
+                            <a href="{{ route('add.role.permission') }}" class="nav-link">Role in Permission</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('all.role.permission')}}" class="nav-link">All Role in Permission</a>
+                            <a href="{{ route('all.role.permission') }}" class="nav-link">All Role in Permission</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-bs-toggle="collapse" href="#admin" role="button"
+                    aria-expanded="false" aria-controls="advancedUI">
+                    <i class="link-icon" data-feather="anchor"></i>
+                    <span class="link-title">Manage User</span>
+                    <i class="link-arrow" data-feather="chevron-down"></i>
+                </a>
+                <div class="collapse" id="admin">
+                    <ul class="nav sub-menu">
+                        <li class="nav-item">
+                            <a href="{{ route('all.admin') }}" class="nav-link">User List</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('add.admin') }}" class="nav-link">Add New User</a>
                         </li>
                     </ul>
                 </div>

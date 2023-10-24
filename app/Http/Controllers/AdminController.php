@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\RedirectResponse;
@@ -97,5 +98,95 @@ class AdminController extends Controller
             'alert-type' => 'success',
         );
         return back()->with($notification);
+    }
+
+    public function AllAdmin()
+    {
+        $alladmin = User::where('role', 'admin')->get();
+        return view('user.all_admin', compact('alladmin'));
+    }
+
+    public function AddAdmin()
+    {
+        $roles = Role::all();
+        return view('user.add_admin', compact('roles'));
+    }
+
+    public function StoreAdmin(Request $request)
+    {
+        $existingUser = User::where('email', $request->email)->first();
+
+        if ($existingUser) {
+            $notification = array(
+                'message' => 'Email address is already in use!',
+                'alert-type' => 'error',
+            );
+
+            return redirect()->back()->with($notification);
+        }
+
+        $user = new User();
+        $user->username = $request->username;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->password = Hash::make($request->password);
+        $user->role = 'admin';
+        $user->status = 'active';
+        $user->save();
+
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+
+        $notification = array(
+            'message' => 'New User Inserted Successfully!',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('all.admin')->with($notification);
+    }
+
+    public function EditAdmin($id)
+    {
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('user.edit_admin', compact('user', 'roles'));
+    }
+
+    public function UpdateAdmin(Request $request, $id)
+    {
+
+        $existingUser = User::where('email', $request->email)->where('id', '!=', $id)->first();
+
+        if ($existingUser) {
+            $notification = array(
+                'message' => 'Email address is already in use!',
+                'alert-type' => 'error',
+            );
+
+            return redirect()->back()->with($notification);
+        }
+
+        $user = User::findOrFail($id);
+        $user->username = $request->username;
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->role = 'admin';
+        $user->status = 'active';
+        $user->save();
+
+        $user->roles()->detach();
+        if ($request->roles) {
+            $user->assignRole($request->roles);
+        }
+
+        $notification = array(
+            'message' => 'User Updated Successfully!',
+            'alert-type' => 'success',
+        );
+        return redirect()->route('all.admin')->with($notification);
     }
 }
