@@ -65,6 +65,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('/store/admin', [AdminController::class, 'StoreAdmin'])->name('store.admin');
     Route::get('/edit/admin/{id}', [AdminController::class, 'EditAdmin'])->name('edit.admin');
     Route::post('/update/admin/{id}', [AdminController::class, 'UpdateAdmin'])->name('update.admin');
+    Route::get('/delete/admin/{id}', [AdminController::class, 'DeleteAdmin'])->name('delete.admin');
 
 });
 
